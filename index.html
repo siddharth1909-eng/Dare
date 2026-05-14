@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Library - Your Gateway to Knowledge</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: #fff;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .services {
+            padding: 4rem 2rem;
+            background-color: #f4f4f4;
+        }
+        
+        .services h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .about {
+            padding: 4rem 2rem;
+        }
+        
+        .about h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        footer p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">📚 City Library</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero" id="home">
+        <h1>Welcome to City Library</h1>
+        <p>Discover a world of knowledge and endless stories</p>
+        <a href="#services" class="btn">Explore Now</a>
+    </section>
+    
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <h3>📖 Book Collection</h3>
+                    <p>Access thousands of books across all genres and categories for all ages.</p>
+                </div>
+                <div class="service-card">
+                    <h3>💻 Digital Resources</h3>
+                    <p>Explore e-books, audiobooks, and online journals from anywhere, anytime.</p>
+                </div>
+                <div class="service-card">
+                    <h3>👥 Community Events</h3>
+                    <p>Join reading clubs, author talks, and educational workshops throughout the year.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🎓 Study Spaces</h3>
+                    <p>Quiet study areas and collaborative zones for students and professionals.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🎯 Research Support</h3>
+                    <p>Get assistance from our expert librarians for your research projects.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🌐 Free WiFi</h3>
+                    <p>High-speed internet access for all our visitors throughout the library.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="about" id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>City Library has been serving our community for over 50 years, providing access to knowledge, culture, and learning resources for everyone.</p>
+            <p>We are committed to fostering a love of reading and learning, offering programs and services that enrich lives and strengthen our community.</p>
+            <p>Visit us today and become part of our growing family of readers and learners!</p>
+        </div>
+    </section>
+    
+    <footer id="contact">
+        <div class="container">
+            <h3>Contact Us</h3>
+            <p>📍 123 Main Street, City Center</p>
+            <p>📞 (555) 123-4567</p>
+            <p>✉️ info@citylibrary.com</p>
+            <p>&copy; 2024 City Library. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
