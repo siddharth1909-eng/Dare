@@ -1,301 +1,228 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>School Admission Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Library - Your Gateway to Knowledge</title>
     <style>
-        :root{
-            --bg:#f6f9fc; --card:#ffffff; --accent:#0b78d1; --muted:#6b7280;
-            --success:#1f7a3a; --danger:#c53030;
-            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        body{ margin:0; background:linear-gradient(180deg,#e9f2fb 0%,var(--bg) 100%); color:#102a43; }
-        .wrap{ max-width:980px; margin:36px auto; padding:20px; }
-        header{ display:flex; align-items:center; gap:16px; margin-bottom:18px; }
-        header h1{ margin:0; font-size:20px; }
-        .card{ background:var(--card); border-radius:10px; padding:22px; box-shadow:0 6px 18px rgba(12,40,70,0.06); }
-        form{ display:grid; grid-template-columns: 1fr 320px; gap:20px; align-items:start; }
-        fieldset{ border:0; padding:0; margin:0; }
-        .section{ background:rgba(6,30,63,0.02); padding:12px; border-radius:8px; margin-bottom:12px; }
-        .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-        label{ display:block; font-size:13px; color:var(--muted); margin-bottom:6px; }
-        input[type="text"], input[type="email"], input[type="date"], input[type="tel"], select, textarea{
-            width:100%; padding:10px 12px; border:1px solid #e6eef7; border-radius:8px; background:white; box-sizing:border-box;
-            font-size:14px; color:#05264b;
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
         }
-        textarea{ min-height:84px; resize:vertical; }
-        .small{ font-size:13px; color:var(--muted); margin-top:6px; }
-        .right-col{ padding-left:6px; }
-        .actions{ display:flex; gap:10px; margin-top:12px; }
-        button{ background:var(--accent); color:white; border:0; padding:10px 14px; border-radius:8px; cursor:pointer; }
-        button.secondary{ background:#eef6ff; color:var(--accent); border:1px solid rgba(11,120,209,0.12); }
-        .notice{ font-size:13px; color:var(--muted); margin-top:8px; }
-        .file-list{ font-size:13px; color:var(--muted); margin-top:8px; }
-        .summary{ background:#f8fffb; border:1px solid #dff3e6; padding:12px; border-radius:8px; font-size:14px; color:var(--success); }
-        .error{ color:var(--danger); font-size:13px; margin-top:8px; }
-        @media (max-width:900px){
-            form{ grid-template-columns: 1fr; }
-            .right-col{ padding-left:0; }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: #fff;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .services {
+            padding: 4rem 2rem;
+            background-color: #f4f4f4;
+        }
+        
+        .services h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .about {
+            padding: 4rem 2rem;
+        }
+        
+        .about h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        footer p {
+            margin: 0.5rem 0;
         }
     </style>
 </head>
 <body>
-    <div class="wrap">
-        <header>
-            <svg width="42" height="42" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 2L2 7l10 5 10-5-10-5z" fill="#0b78d1"/></svg>
-            <div>
-                <h1>School Admission Application</h1>
-                <div class="small">Complete the form below to apply for admission. Required fields are marked with *</div>
+    <header>
+        <nav>
+            <div class="logo">📚 City Library</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero" id="home">
+        <h1>Welcome to City Library</h1>
+        <p>Discover a world of knowledge and endless stories</p>
+        <a href="#services" class="btn">Explore Now</a>
+    </section>
+    
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <h3>📖 Book Collection</h3>
+                    <p>Access thousands of books across all genres and categories for all ages.</p>
+                </div>
+                <div class="service-card">
+                    <h3>💻 Digital Resources</h3>
+                    <p>Explore e-books, audiobooks, and online journals from anywhere, anytime.</p>
+                </div>
+                <div class="service-card">
+                    <h3>👥 Community Events</h3>
+                    <p>Join reading clubs, author talks, and educational workshops throughout the year.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🎓 Study Spaces</h3>
+                    <p>Quiet study areas and collaborative zones for students and professionals.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🎯 Research Support</h3>
+                    <p>Get assistance from our expert librarians for your research projects.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🌐 Free WiFi</h3>
+                    <p>High-speed internet access for all our visitors throughout the library.</p>
+                </div>
             </div>
-        </header>
-
-        <div class="card">
-            <form id="admissionForm" novalidate>
-                <div>
-                    <fieldset class="section" aria-labelledby="student-heading">
-                        <h2 id="student-heading" style="margin:0 0 10px 0; font-size:15px;">Student Information</h2>
-                        <div class="form-grid">
-                            <div>
-                                <label for="firstName">First name *</label>
-                                <input id="firstName" name="firstName" type="text" required autocomplete="given-name" />
-                            </div>
-                            <div>
-                                <label for="lastName">Last name *</label>
-                                <input id="lastName" name="lastName" type="text" required autocomplete="family-name" />
-                            </div>
-
-                            <div>
-                                <label for="dob">Date of birth *</label>
-                                <input id="dob" name="dob" type="date" required />
-                            </div>
-                            <div>
-                                <label for="gender">Gender</label>
-                                <select id="gender" name="gender">
-                                    <option value="">Prefer not to say</option>
-                                    <option>Female</option>
-                                    <option>Male</option>
-                                    <option>Non-binary</option>
-                                </select>
-                            </div>
-
-                            <div style="grid-column:1/3;">
-                                <label for="address">Home address *</label>
-                                <input id="address" name="address" type="text" required />
-                            </div>
-
-                            <div>
-                                <label for="grade">Applying for grade *</label>
-                                <select id="grade" name="grade" required>
-                                    <option value="">Select grade</option>
-                                    <option>Pre-K</option>
-                                    <option>Kindergarten</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                    <option>7</option>
-                                    <option>8</option>
-                                    <option>9</option>
-                                    <option>10</option>
-                                    <option>11</option>
-                                    <option>12</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label for="previousSchool">Previous school</label>
-                                <input id="previousSchool" name="previousSchool" type="text" />
-                            </div>
-
-                            <div style="grid-column:1/3;">
-                                <label for="notes">Additional information (medical, learning needs, etc.)</label>
-                                <textarea id="notes" name="notes" placeholder="Briefly describe any important information"></textarea>
-                            </div>
-                        </div>
-                    </fieldset>
-
-                    <fieldset class="section" aria-labelledby="parent-heading" style="margin-top:12px;">
-                        <h3 id="parent-heading" style="margin:0 0 10px 0; font-size:15px;">Parent / Guardian</h3>
-                        <div class="form-grid">
-                            <div>
-                                <label for="parentName">Name *</label>
-                                <input id="parentName" name="parentName" type="text" required />
-                            </div>
-                            <div>
-                                <label for="relationship">Relationship *</label>
-                                <input id="relationship" name="relationship" type="text" required />
-                            </div>
-
-                            <div>
-                                <label for="phone">Phone *</label>
-                                <input id="phone" name="phone" type="tel" required pattern="^[0-9+\-\s()]{7,25}$" placeholder="+1 555 555 5555" />
-                            </div>
-                            <div>
-                                <label for="email">Email *</label>
-                                <input id="email" name="email" type="email" required autocomplete="email" />
-                            </div>
-
-                            <div style="grid-column:1/3;">
-                                <label for="emergencyContact">Emergency contact (if different)</label>
-                                <input id="emergencyContact" name="emergencyContact" type="text" />
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-
-                <aside class="right-col">
-                    <fieldset class="section">
-                        <h3 style="margin:0 0 10px 0; font-size:15px;">Documents</h3>
-                        <label for="documents">Upload supporting documents</label>
-                        <input id="documents" name="documents" type="file" accept=".pdf,.jpg,.jpeg,.png" multiple />
-                        <div class="file-list" id="fileList">No files selected</div>
-                        <div class="small">Accepted: PDF, JPG, PNG. Max size per file depends on server.</div>
-                    </fieldset>
-
-                    <fieldset class="section" style="margin-top:12px;">
-                        <label>Preferred start term</label>
-                        <select id="term" name="term">
-                            <option>Fall</option>
-                            <option>Spring</option>
-                            <option>Summer</option>
-                        </select>
-
-                        <div style="margin-top:10px;">
-                            <label><input type="checkbox" id="consent" name="consent" required /> I confirm that the information provided is accurate *</label>
-                        </div>
-
-                        <div class="actions">
-                            <button type="submit">Submit application</button>
-                            <button type="button" class="secondary" id="previewBtn">Preview</button>
-                        </div>
-
-                        <div id="formMessage" role="status" aria-live="polite" class="notice"></div>
-                    </fieldset>
-
-                    <div id="submissionSummary" style="margin-top:12px;"></div>
-                </aside>
-            </form>
         </div>
-    </div>
-
-    <script>
-        // Basic client-side behavior: list files, preview, validate and show summary.
-        const form = document.getElementById('admissionForm');
-        const docs = document.getElementById('documents');
-        const fileList = document.getElementById('fileList');
-        const previewBtn = document.getElementById('previewBtn');
-        const message = document.getElementById('formMessage');
-        const summary = document.getElementById('submissionSummary');
-
-        docs.addEventListener('change', () => {
-            const files = Array.from(docs.files);
-            if (!files.length) {
-                fileList.textContent = 'No files selected';
-                return;
-            }
-            fileList.innerHTML = files.map(f => `${escapeHtml(f.name)} (${Math.round(f.size/1024)} KB)`).join('<br>');
-        });
-
-        previewBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const data = collectForm();
-            if (!data) return;
-            summary.innerHTML = renderPreview(data);
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        });
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            message.textContent = '';
-            if (!form.checkValidity()) {
-                message.className = 'error';
-                message.textContent = 'Please complete all required fields correctly.';
-                form.reportValidity();
-                return;
-            }
-            if (!document.getElementById('consent').checked) {
-                message.className = 'error';
-                message.textContent = 'Consent is required to submit the application.';
-                return;
-            }
-
-            // Simulate submission: in production, send via fetch() to server endpoint.
-            message.className = 'notice';
-            message.textContent = 'Submitting application...';
-            const data = collectForm(true);
-            // Simulated async submission
-            setTimeout(() => {
-                message.className = 'summary';
-                message.textContent = 'Application submitted successfully. Reference: ' + generateRef();
-                summary.innerHTML = renderPreview(data, true);
-                form.reset();
-                fileList.textContent = 'No files selected';
-            }, 800);
-        });
-
-        function collectForm(includeFiles = false){
-            const f = new FormData(form);
-            const obj = {
-                student: {
-                    firstName: f.get('firstName')||'',
-                    lastName: f.get('lastName')||'',
-                    dob: f.get('dob')||'',
-                    gender: f.get('gender')||'',
-                    address: f.get('address')||'',
-                    grade: f.get('grade')||'',
-                    previousSchool: f.get('previousSchool')||'',
-                    notes: f.get('notes')||''
-                },
-                parent: {
-                    name: f.get('parentName')||'',
-                    relation: f.get('relationship')||'',
-                    phone: f.get('phone')||'',
-                    email: f.get('email')||'',
-                    emergency: f.get('emergencyContact')||''
-                },
-                term: f.get('term')||'',
-                files: []
-            };
-            if (includeFiles) {
-                obj.files = Array.from(docs.files).map(file => ({ name: file.name, size: file.size }));
-            } else {
-                obj.files = Array.from(docs.files).map(file => file.name);
-            }
-            return obj;
-        }
-
-        function renderPreview(data, submitted = false){
-            return `
-                <div style="padding:12px; border-radius:8px; background:${submitted? '#f1fcff' : '#fff7ed'}; border:1px solid ${submitted? '#dff3ff' : '#ffe7c2'}">
-                    <strong>${submitted ? 'Submitted application' : 'Application preview'}</strong>
-                    <div style="margin-top:8px; font-size:14px;">
-                        <div><strong>Student:</strong> ${escapeHtml(data.student.firstName)} ${escapeHtml(data.student.lastName)} (${escapeHtml(data.student.dob) || 'DOB N/A'})</div>
-                        <div><strong>Grade:</strong> ${escapeHtml(data.student.grade || 'N/A')}</div>
-                        <div><strong>Address:</strong> ${escapeHtml(data.student.address || 'N/A')}</div>
-                        <div><strong>Parent/Guardian:</strong> ${escapeHtml(data.parent.name)} — ${escapeHtml(data.parent.phone)}</div>
-                        <div><strong>Email:</strong> ${escapeHtml(data.parent.email)}</div>
-                        <div><strong>Start term:</strong> ${escapeHtml(data.term)}</div>
-                        <div style="margin-top:8px;"><strong>Files:</strong> ${(data.files && data.files.length) ? data.files.map(f=>escapeHtml(typeof f === 'string' ? f : f.name)).join(', ') : 'None'}</div>
-                        ${data.student.notes ? `<div style="margin-top:8px;"><strong>Notes:</strong> ${escapeHtml(data.student.notes)}</div>` : ''}
-                    </div>
-                </div>
-            `;
-        }
-
-        function escapeHtml(s){
-            return String(s)
-                .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-                .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-        }
-
-        function generateRef(){
-            const t = Date.now().toString(36).toUpperCase();
-            const rnd = Math.random().toString(36).substring(2,6).toUpperCase();
-            return `ADM-${t}-${rnd}`;
-        }
-    </script>
+    </section>
+    
+    <section class="about" id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>City Library has been serving our community for over 50 years, providing access to knowledge, culture, and learning resources for everyone.</p>
+            <p>We are committed to fostering a love of reading and learning, offering programs and services that enrich lives and strengthen our community.</p>
+            <p>Visit us today and become part of our growing family of readers and learners!</p>
+        </div>
+    </section>
+    
+    <footer id="contact">
+        <div class="container">
+            <h3>Contact Us</h3>
+            <p>📍 123 Main Street, City Center</p>
+            <p>📞 (555) 123-4567</p>
+            <p>✉️ info@citylibrary.com</p>
+            <p>&copy; 2024 City Library. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
